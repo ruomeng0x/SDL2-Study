@@ -1,5 +1,7 @@
 #include "SDL.h"
 
+#include <iostream>
+
 int main(int argc, char *argv[]) {
     SDL_Init(SDL_INIT_EVERYTHING);
 
@@ -11,9 +13,14 @@ int main(int argc, char *argv[]) {
             600,
             SDL_WINDOW_SHOWN
     );
+    if (window == nullptr) {
+        std::cerr << "Renderer could not be created! SDL Error: " << SDL_GetError() << std::endl;
+        return 1;
+    }
+
     SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-    if (!renderer) {
-        printf("Renderer could not be created! SDL Error: %s\n", SDL_GetError());
+    if (renderer == nullptr) {
+        std::cerr << "Renderer could not be created! SDL Error: " << SDL_GetError() << std::endl;
         return 1;
     }
 
