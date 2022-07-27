@@ -14,3 +14,4 @@ find_package(SDL2 CONFIG REQUIRED)
 find_package(sdl2-image CONFIG REQUIRED)
 
 add_subdirectory(01_HelloWorld)
+add_subdirectory(02_LoadImage)
